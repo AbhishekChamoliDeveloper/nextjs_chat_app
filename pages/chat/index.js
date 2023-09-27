@@ -25,7 +25,7 @@ function Chat() {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    const newSocket = io(process.env.NEXT_PUBLIC_SOCKET_URL);
+    const newSocket = io(process.env.SOCKET_URL);
     setSocket(newSocket);
 
     return () => {
@@ -104,7 +104,7 @@ function Chat() {
         formData.append("messageId", id); // Attach the message ID to the form data
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_SOCKET_URL}/api/upload-image`,
+          `${process.env.SOCKET_URL}/api/upload-image`,
           {
             method: "POST",
             body: formData,
@@ -167,7 +167,7 @@ function Chat() {
         formData.append("messageId", id);
 
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_SOCKET_URL}/api/upload-video`,
+          `${process.env.SOCKET_URL}/api/upload-video`,
           {
             method: "POST",
             body: formData,
